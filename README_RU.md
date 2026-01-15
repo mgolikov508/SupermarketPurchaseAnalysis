@@ -2,6 +2,8 @@
 
 Интерактивное веб-приложение для анализа данных о покупках в супермаркете, созданное с помощью Streamlit.
 
+🌐 **Демо:** [https://supermarketpurchaseanalysis.streamlit.app/](https://supermarketpurchaseanalysis.streamlit.app/)
+
 [English version](README.md)
 
 ## Возможности
