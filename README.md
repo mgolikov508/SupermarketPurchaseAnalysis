@@ -22,7 +22,7 @@ git clone https://github.com/yourusername/supermarket-analysis.git
 cd supermarket-analysis
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirements.txt 
 
 # Generate sample data
 python generate_data.py
