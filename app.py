@@ -7,13 +7,13 @@ import os
 import subprocess
 
 st.set_page_config(
-    page_title="Supermarket Analysis",
+    page_title="Анализ Супермаркетов",
     page_icon="🛒",
     layout="wide"
 )
 
-st.title("🛒 Supermarket Purchase Analysis Dashboard")
-st.markdown("Interactive analysis of supermarket sales and customer behavior")
+st.title("🛒 Дашборд по покупкам в супермаркете")
+st.markdown("Интерактивный анализ о продажах в супермаркете и поведении клиентов")
 
 # Load data
 @st.cache_data
@@ -29,7 +29,7 @@ def load_data():
 df = load_data()
 
 # Sidebar filters
-st.sidebar.header("🔍 Filters")
+st.sidebar.header("🔍 Фильтры")
 
 categories = st.sidebar.multiselect(
     "Category",
@@ -80,7 +80,7 @@ with col4:
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("📊 Sales by Category")
+    st.subheader("📊 Продажи по категориям")
     category_sales = filtered_df.groupby("Category")["Total"].sum().sort_values(ascending=False)
     fig1 = px.bar(
         x=category_sales.values,
@@ -94,7 +94,7 @@ with col1:
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
-    st.subheader("💳 Payment Method Distribution")
+    st.subheader("💳 Платежный способ")
     payment_counts = filtered_df["Payment Method"].value_counts()
     fig2 = px.pie(
         values=payment_counts.values,
@@ -104,7 +104,7 @@ with col2:
     st.plotly_chart(fig2, use_container_width=True)
 
 # Time series
-st.subheader("📈 Daily Sales Trend")
+st.subheader("📈 Ежедневный тренд продаж")
 daily_sales = filtered_df.groupby("Date")["Total"].sum().reset_index()
 fig3 = px.line(
     daily_sales,
@@ -119,7 +119,7 @@ st.plotly_chart(fig3, use_container_width=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("👥 Customer Type Analysis")
+    st.subheader("👥 Анализ типа покупателей")
     customer_revenue = filtered_df.groupby("Customer Type")["Total"].sum()
     fig4 = px.pie(
         values=customer_revenue.values,
@@ -129,7 +129,7 @@ with col1:
     st.plotly_chart(fig4, use_container_width=True)
 
 with col2:
-    st.subheader("🏆 Top 10 Products")
+    st.subheader("🏆 Топ-10 продуктов")
     top_products = filtered_df.groupby("Product")["Total"].sum().sort_values(ascending=False).head(10)
     fig5 = px.bar(
         x=top_products.values,
@@ -140,7 +140,7 @@ with col2:
     st.plotly_chart(fig5, use_container_width=True)
 
 # Data table
-st.subheader("📋 Purchase Details")
+st.subheader("📋 Детали транзакций")
 st.dataframe(
     filtered_df.sort_values("Date", ascending=False),
     use_container_width=True,
