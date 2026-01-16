@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🛒 Дашборд по покупкам в супермаркете")
+st.title("Дашборд по покупкам в супермаркете")
 st.markdown("Интерактивный анализ о продажах в супермаркете и поведении клиентов")
 
 # Load data
@@ -29,7 +29,7 @@ def load_data():
 df = load_data()
 
 # Sidebar filters
-st.sidebar.header("🔍 Фильтры")
+st.sidebar.header("Фильтры")
 
 categories = st.sidebar.multiselect(
     "Category",
@@ -68,19 +68,19 @@ filtered_df = df[
 # Metrics
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.metric("Total Purchases", len(filtered_df))
+    st.metric("Всего покупок", len(filtered_df))
 with col2:
-    st.metric("Total Revenue", f"${filtered_df['Total'].sum():,.2f}")
+    st.metric("Суммарная выручка", f"${filtered_df['Total'].sum():,.2f}")
 with col3:
-    st.metric("Avg Purchase", f"${filtered_df['Total'].mean():.2f}")
+    st.metric("Средний чек", f"${filtered_df['Total'].mean():.2f}")
 with col4:
-    st.metric("Products Sold", filtered_df['Quantity'].sum())
+    st.metric("Количество проданных товаров", filtered_df['Quantity'].sum())
 
 # Charts
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("📊 Продажи по категориям")
+    st.subheader("Продажи по категориям")
     category_sales = filtered_df.groupby("Category")["Total"].sum().sort_values(ascending=False)
     fig1 = px.bar(
         x=category_sales.values,
@@ -94,7 +94,7 @@ with col1:
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
-    st.subheader("💳 Платежный способ")
+    st.subheader("Платежный способ")
     payment_counts = filtered_df["Payment Method"].value_counts()
     fig2 = px.pie(
         values=payment_counts.values,
@@ -104,7 +104,7 @@ with col2:
     st.plotly_chart(fig2, use_container_width=True)
 
 # Time series
-st.subheader("📈 Ежедневный тренд продаж")
+st.subheader("Ежедневный тренд продаж")
 daily_sales = filtered_df.groupby("Date")["Total"].sum().reset_index()
 fig3 = px.line(
     daily_sales,
@@ -119,7 +119,7 @@ st.plotly_chart(fig3, use_container_width=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("👥 Анализ типа покупателей")
+    st.subheader("Анализ типа покупателей")
     customer_revenue = filtered_df.groupby("Customer Type")["Total"].sum()
     fig4 = px.pie(
         values=customer_revenue.values,
@@ -129,7 +129,7 @@ with col1:
     st.plotly_chart(fig4, use_container_width=True)
 
 with col2:
-    st.subheader("🏆 Топ-10 продуктов")
+    st.subheader("Топ-10 продуктов")
     top_products = filtered_df.groupby("Product")["Total"].sum().sort_values(ascending=False).head(10)
     fig5 = px.bar(
         x=top_products.values,
@@ -140,7 +140,7 @@ with col2:
     st.plotly_chart(fig5, use_container_width=True)
 
 # Data table
-st.subheader("📋 Детали транзакций")
+st.subheader("Детали транзакций")
 st.dataframe(
     filtered_df.sort_values("Date", ascending=False),
     use_container_width=True,
@@ -149,7 +149,7 @@ st.dataframe(
 
 # Download button
 st.download_button(
-    label="📥 Download Filtered Data",
+    label="Загрузить данные",
     data=filtered_df.to_csv(index=False).encode('utf-8'),
     file_name="filtered_supermarket_data.csv",
     mime="text/csv"
