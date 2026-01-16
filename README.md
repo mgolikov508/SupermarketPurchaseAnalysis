@@ -8,11 +8,11 @@ Interactive web application for analyzing supermarket purchase data, built with 
 
 ## Features
 
-- 📊 Interactive visualization of purchase patterns and trends
-- 🔍 Filter by product category, payment method, and customer type
-- 📈 Sales analytics and revenue insights
-- 💳 Payment method distribution analysis
-- 🎨 Modern and responsive UI
+- Interactive visualization of purchase patterns and trends
+- Filter by product category, payment method, and customer type
+- Sales analytics and revenue insights
+- Payment method distribution analysis
+- Modern and responsive UI
 
 ## Quick Start
 
