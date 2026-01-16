@@ -1,8 +1,8 @@
-# Supermarket Purchase Analysis 🛒📊
+# Supermarket Purchase Analysis
 
 Interactive web application for analyzing supermarket purchase data, built with Streamlit.
 
-🌐 **Live Demo:** [https://supermarketpurchaseanalysis.streamlit.app/](https://supermarketpurchaseanalysis.streamlit.app/)
+**Live Demo:** [https://supermarketpurchaseanalysis.streamlit.app/](https://supermarketpurchaseanalysis.streamlit.app/)
 
 [Русская версия](README_RU.md)
 
